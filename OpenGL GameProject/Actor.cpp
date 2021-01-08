@@ -101,7 +101,7 @@ void Actor::ComputeWorldTransform()
 		//Scale, then rotate, then translate
 		mWorldTransform = Matrix4::CreateScale(mScale);
 		mWorldTransform *= Matrix4::CreateRotationZ(m2Rotation);
-		mWorldTransform *= Matrix4::CreateTranslation(Vector3(m2Position.X, m2Position.Y, 0.0f));
+		mWorldTransform *= Matrix4::CreateTranslation(Vector3(m2Position.x, m2Position.y, 0.0f));
 		mWorldTransform *= Matrix4::CreateFromQuaternion(m3Rotation);
 		mWorldTransform *= Matrix4::CreateTranslation(m3Position);
 		//Inform components world transform updated

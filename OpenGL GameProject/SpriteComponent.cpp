@@ -44,8 +44,8 @@ void SpriteComponent::Draw(SDL_Renderer* renderer)
 		r.w = static_cast<int>(mTextureWidth * mOwner->GetScale());
 		r.h = static_cast<int>(mTextureHeight * mOwner->GetScale());
 		//Central position
-		r.x = static_cast<int>(mOwner->GetPosition().X - r.w / 2);
-		r.x = static_cast<int>(mOwner->GetPosition().Y - r.h / 2);
+		r.x = static_cast<int>(mOwner->GetPosition().x - r.w / 2);
+		r.x = static_cast<int>(mOwner->GetPosition().y - r.h / 2);
 
 		SDL_RenderCopyEx(renderer,
 			sdlTexture, nullptr, &r,

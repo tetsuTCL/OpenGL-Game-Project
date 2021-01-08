@@ -39,8 +39,8 @@ const Quaternion Quaternion::Identity(0.0f, 0.0f, 0.0f, 1.0f);
 Vector2 Vector2::Transform(const Vector2& vec, const Matrix3& mat, float w /*= 1.0f*/)
 {
 	Vector2 returnValue;
-	returnValue.X = vec.X * mat.matrix[0][0] + vec.Y * mat.matrix[1][0] + w * mat.matrix[2][0];
-	returnValue.Y = vec.X * mat.matrix[0][1] + vec.Y * mat.matrix[1][1] + w * mat.matrix[2][1];
+	returnValue.x = vec.x * mat.matrix[0][0] + vec.y * mat.matrix[1][0] + w * mat.matrix[2][0];
+	returnValue.y = vec.x * mat.matrix[0][1] + vec.y * mat.matrix[1][1] + w * mat.matrix[2][1];
 	//ignore w since we aren't returning a new value for it...
 	return returnValue;
 }
@@ -48,12 +48,12 @@ Vector2 Vector2::Transform(const Vector2& vec, const Matrix3& mat, float w /*= 1
 Vector3 Vector3::Transform(const Vector3& vec, const Matrix4& mat, float w /*= 1.0f*/)
 {
 	Vector3 returnValue;
-	returnValue.X = vec.X * mat.matrix[0][0] + vec.Y * mat.matrix[1][0] +
-		vec.Z * mat.matrix[2][0] + w * mat.matrix[3][0];
-	returnValue.Y = vec.X * mat.matrix[0][1] + vec.Y * mat.matrix[1][1] +
-		vec.Z * mat.matrix[2][1] + w * mat.matrix[3][1];
-	returnValue.Z = vec.X * mat.matrix[0][2] + vec.Y * mat.matrix[1][2] +
-		vec.Z * mat.matrix[2][2] + w * mat.matrix[3][2];
+	returnValue.x = vec.x * mat.matrix[0][0] + vec.y * mat.matrix[1][0] +
+		vec.z * mat.matrix[2][0] + w * mat.matrix[3][0];
+	returnValue.y = vec.x * mat.matrix[0][1] + vec.y * mat.matrix[1][1] +
+		vec.z * mat.matrix[2][1] + w * mat.matrix[3][1];
+	returnValue.z = vec.x * mat.matrix[0][2] + vec.y * mat.matrix[1][2] +
+		vec.z * mat.matrix[2][2] + w * mat.matrix[3][2];
 	//ignore w since we aren't returning a new value for it...
 	return returnValue;
 }
@@ -62,14 +62,14 @@ Vector3 Vector3::Transform(const Vector3& vec, const Matrix4& mat, float w /*= 1
 Vector3 Vector3::TransformWithPerspDiv(const Vector3& vec, const Matrix4& mat, float w /*= 1.0f*/)
 {
 	Vector3 returnValue;
-	returnValue.X = vec.X * mat.matrix[0][0] + vec.Y * mat.matrix[1][0] +
-		vec.Z * mat.matrix[2][0] + w * mat.matrix[3][0];
-	returnValue.Y = vec.X * mat.matrix[0][1] + vec.Y * mat.matrix[1][1] +
-		vec.Z * mat.matrix[2][1] + w * mat.matrix[3][1];
-	returnValue.Z = vec.X * mat.matrix[0][2] + vec.Y * mat.matrix[1][2] +
-		vec.Z * mat.matrix[2][2] + w * mat.matrix[3][2];
-	float transformedW = vec.X * mat.matrix[0][3] + vec.Y * mat.matrix[1][3] +
-		vec.Z * mat.matrix[2][3] + w * mat.matrix[3][3];
+	returnValue.x = vec.x * mat.matrix[0][0] + vec.y * mat.matrix[1][0] +
+		vec.z * mat.matrix[2][0] + w * mat.matrix[3][0];
+	returnValue.y = vec.x * mat.matrix[0][1] + vec.y * mat.matrix[1][1] +
+		vec.z * mat.matrix[2][1] + w * mat.matrix[3][1];
+	returnValue.z = vec.x * mat.matrix[0][2] + vec.y * mat.matrix[1][2] +
+		vec.z * mat.matrix[2][2] + w * mat.matrix[3][2];
+	float transformedW = vec.x * mat.matrix[0][3] + vec.y * mat.matrix[1][3] +
+		vec.z * mat.matrix[2][3] + w * mat.matrix[3][3];
 	if (!Math::NearZero(Math::Abs(transformedW)))
 	{
 		transformedW = 1.0f / transformedW;
@@ -82,9 +82,9 @@ Vector3 Vector3::TransformWithPerspDiv(const Vector3& vec, const Matrix4& mat, f
 Vector3 Vector3::Transform(const Vector3& v, const Quaternion& q)
 {
 	// v + 2.0*cross(q.xyz, cross(q.xyz,v) + q.w*v);
-	Vector3 qv(q.X, q.Y, q.Z);
+	Vector3 qv(q.x, q.y, q.z);
 	Vector3 returnValue = v;
-	returnValue += 2.0f * Vector3::Cross(qv, Vector3::Cross(qv, v) + q.W * v);
+	returnValue += 2.0f * Vector3::Cross(qv, Vector3::Cross(qv, v) + q.w * v);
 	return returnValue;
 }
 
@@ -205,19 +205,19 @@ Matrix4 Matrix4::CreateFromQuaternion(const class Quaternion& q)
 {
 	float matrix[4][4];
 
-	matrix[0][0] = 1.0f - 2.0f * q.Y * q.Y - 2.0f * q.Z * q.Z;
-	matrix[0][1] = 2.0f * q.X * q.Y + 2.0f * q.W * q.Z;
-	matrix[0][2] = 2.0f * q.X * q.Z - 2.0f * q.W * q.Y;
+	matrix[0][0] = 1.0f - 2.0f * q.y * q.y - 2.0f * q.z * q.z;
+	matrix[0][1] = 2.0f * q.x * q.y + 2.0f * q.w * q.z;
+	matrix[0][2] = 2.0f * q.x * q.z - 2.0f * q.w * q.y;
 	matrix[0][3] = 0.0f;
 
-	matrix[1][0] = 2.0f * q.X * q.Y - 2.0f * q.W * q.Z;
-	matrix[1][1] = 1.0f - 2.0f * q.X * q.X - 2.0f * q.Z * q.Z;
-	matrix[1][2] = 2.0f * q.Y * q.Z + 2.0f * q.W * q.X;
+	matrix[1][0] = 2.0f * q.x * q.y - 2.0f * q.w * q.z;
+	matrix[1][1] = 1.0f - 2.0f * q.x * q.x - 2.0f * q.z * q.z;
+	matrix[1][2] = 2.0f * q.y * q.z + 2.0f * q.w * q.x;
 	matrix[1][3] = 0.0f;
 
-	matrix[2][0] = 2.0f * q.X * q.Z + 2.0f * q.W * q.Y;
-	matrix[2][1] = 2.0f * q.Y * q.Z - 2.0f * q.W * q.X;
-	matrix[2][2] = 1.0f - 2.0f * q.X * q.X - 2.0f * q.Y * q.Y;
+	matrix[2][0] = 2.0f * q.x * q.z + 2.0f * q.w * q.y;
+	matrix[2][1] = 2.0f * q.y * q.z - 2.0f * q.w * q.x;
+	matrix[2][2] = 1.0f - 2.0f * q.x * q.x - 2.0f * q.y * q.y;
 	matrix[2][3] = 0.0f;
 
 	matrix[3][0] = 0.0f;

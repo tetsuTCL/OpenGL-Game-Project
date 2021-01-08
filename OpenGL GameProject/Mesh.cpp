@@ -221,20 +221,20 @@ void Mesh::GetMesh(FbxNode* node, Renderer* renderer)
 	{
 		//Position
 		Vertex vertex;
-		vertices.emplace_back(positions[indices[i]].X);
-		vertices.emplace_back(positions[indices[i]].Y);
-		vertices.emplace_back(positions[indices[i]].Z);
+		vertices.emplace_back(positions[indices[i]].x);
+		vertices.emplace_back(positions[indices[i]].y);
+		vertices.emplace_back(positions[indices[i]].z);
 
 		//Normal
-		vertices.emplace_back(normals[indices[i]].X);
-		vertices.emplace_back(normals[indices[i]].Y);
-		vertices.emplace_back(normals[indices[i]].Z);
+		vertices.emplace_back(normals[indices[i]].x);
+		vertices.emplace_back(normals[indices[i]].y);
+		vertices.emplace_back(normals[indices[i]].z);
 
 		//UV
 		if (uvs.size() == indices.size())
 		{
-			vertices.emplace_back(uvs[i].X);
-			vertices.emplace_back(uvs[i].Y);
+			vertices.emplace_back(uvs[i].x);
+			vertices.emplace_back(uvs[i].y);
 		}
 		else
 		{
@@ -285,9 +285,9 @@ void Mesh::GetPosition(FbxMesh* mesh)
 	{
 		//position
 		Vector3 p;
-		p.X = (float)vertex[i][0];//X
-		p.Y = (float)vertex[i][1];//Y
-		p.Z = (float)vertex[i][2];//Z
+		p.x = (float)vertex[i][0];//X
+		p.y = (float)vertex[i][1];//Y
+		p.z = (float)vertex[i][2];//Z
 		positions.emplace_back(p);
 
 		mRadius = Math::Max(mRadius, p.LengthSq());
@@ -312,9 +312,9 @@ void Mesh::GetNormal(FbxMesh* _mesh)
 				for (int j = 0; j < normal->GetDirectArray().GetCount(); j++)
 				{
 					Vector3 n;
-					n.X = (float)normal->GetDirectArray().GetAt(j)[0];
-					n.Y = (float)normal->GetDirectArray().GetAt(j)[1];
-					n.Z = (float)normal->GetDirectArray().GetAt(j)[2];
+					n.x = (float)normal->GetDirectArray().GetAt(j)[0];
+					n.y = (float)normal->GetDirectArray().GetAt(j)[1];
+					n.z = (float)normal->GetDirectArray().GetAt(j)[2];
 					normals.emplace_back(n);
 				}
 			}
@@ -355,8 +355,8 @@ void Mesh::GetUV(FbxMesh* mesh)
 				for (int j = 0; j < uv->GetDirectArray().GetCount(); j++)
 				{
 					Vector2 vec2UV;
-					vec2UV.X = (float)uv->GetDirectArray().GetAt(i)[0];
-					vec2UV.Y = (float)uv->GetDirectArray().GetAt(i)[1];
+					vec2UV.x = (float)uv->GetDirectArray().GetAt(i)[0];
+					vec2UV.y = (float)uv->GetDirectArray().GetAt(i)[1];
 					uvs.emplace_back(vec2UV);
 				}
 			}
@@ -367,8 +367,8 @@ void Mesh::GetUV(FbxMesh* mesh)
 					int index = uv->GetIndexArray().GetAt(i);
 
 					Vector2 vec2UV;
-					vec2UV.X = (float)uv->GetDirectArray().GetAt(index)[0];
-					vec2UV.Y = (float)uv->GetDirectArray().GetAt(index)[1];
+					vec2UV.x = (float)uv->GetDirectArray().GetAt(index)[0];
+					vec2UV.y = (float)uv->GetDirectArray().GetAt(index)[1];
 					uvs.emplace_back(vec2UV);
 				}
 			}

@@ -106,37 +106,37 @@ namespace Math
 class Vector2
 {
 public:
-	float X;
-	float Y;
+	float x;
+	float y;
 
 	Vector2()
-		:X(0.0f)
-		, Y(0.0f)
+		:x(0.0f)
+		, y(0.0f)
 	{
 	
 	}
 
 	explicit Vector2(float inX, float inY)
-		:X(inX)
-		, Y(inY)
+		:x(inX)
+		, y(inY)
 	{
 	
 	}
 
 	void Set(float inX, float inY)
 	{
-		X = inX;
-		Y = inY;
+		x = inX;
+		y = inY;
 	}
 
 	friend Vector2 operator+(const Vector2& a, const Vector2& b)
 	{
-		return Vector2(a.X + b.X, a.Y + b.Y);
+		return Vector2(a.x + b.x, a.y + b.y);
 	}
 
 	friend Vector2 operator-(const Vector2& a, const Vector2& b)
 	{
-		return Vector2(a.X - b.X, a.Y - b.Y);
+		return Vector2(a.x - b.x, a.y - b.y);
 	}
 
 	//friend Vector2 operator-(const Vector2& a)
@@ -146,49 +146,49 @@ public:
 
 	friend Vector2 operator*(const Vector2& a, const Vector2& b)
 	{
-		return Vector2(a.X * b.X, a.Y * b.Y);
+		return Vector2(a.x * b.x, a.y * b.y);
 	}
 
 	// Scalar multiplication
 	friend Vector2 operator*(const Vector2& vec, float scalar)
 	{
-		return Vector2(vec.X * scalar, vec.Y * scalar);
+		return Vector2(vec.x * scalar, vec.y * scalar);
 	}
 
 	// Scalar multiplication
 	friend Vector2 operator*(float scalar, const Vector2& vec)
 	{
-		return Vector2(vec.X * scalar, vec.Y * scalar);
+		return Vector2(vec.x * scalar, vec.y * scalar);
 	}
 
 	// Scalar *=
 	Vector2& operator*=(float scalar)
 	{
-		X *= scalar;
-		Y *= scalar;
+		x *= scalar;
+		y *= scalar;
 		return *this;
 	}
 
 	// Vector +=
 	Vector2& operator+=(const Vector2& right)
 	{
-		X += right.X;
-		Y += right.Y;
+		x += right.x;
+		y += right.y;
 		return *this;
 	}
 
 	// Vector -=
 	Vector2& operator-=(const Vector2& right)
 	{
-		X -= right.X;
-		Y -= right.Y;
+		x -= right.x;
+		y -= right.y;
 		return *this;
 	}
 
 	// Length squared of vector
 	float LengthSq() const
 	{
-		return (X * X + Y * Y);
+		return (x * x + y * y);
 	}
 
 	// Length of vector
@@ -203,8 +203,8 @@ public:
 		float length = Length();
 		if (length != 0)
 		{
-			X /= length;
-			Y /= length;
+			x /= length;
+			y /= length;
 		}
 	}
 
@@ -219,7 +219,7 @@ public:
 
 	static float Dot(const Vector2& a, const Vector2& b)
 	{
-		return (a.X * b.X + a.Y * b.Y);
+		return (a.x * b.x + a.y * b.y);
 	}
 
 	//Lerp from A to B by f
@@ -247,22 +247,22 @@ public:
 class Vector3
 {
 public:
-	float X;
-	float Y;
-	float Z;
+	float x;
+	float y;
+	float z;
 
 	Vector3()
-		:X(0.0f)
-		, Y(0.0f)
-		, Z(0.0f)
+		:x(0.0f)
+		, y(0.0f)
+		, z(0.0f)
 	{
 	
 	}
 
 	explicit Vector3(float inX, float inY, float inZ)
-		:X(inX)
-		, Y(inY)
-		, Z(inZ)
+		:x(inX)
+		, y(inY)
+		, z(inZ)
 	{
 	
 	}
@@ -270,74 +270,74 @@ public:
 	//Cast to a const float pointer
 	const float* GetAsFloatPtr() const
 	{
-		return reinterpret_cast<const float*>(&X);
+		return reinterpret_cast<const float*>(&x);
 	}
 
 	//Set all three components in one line
 	void Set(float inX, float inY, float inZ)
 	{
-		X = inX;
-		Y = inY;
-		Z = inZ;
+		x = inX;
+		y = inY;
+		z = inZ;
 	}
 
 	friend Vector3 operator+(const Vector3& a, const Vector3& b)
 	{
-		return Vector3(a.X + b.X, a.Y + b.Y, a.Z + b.Z);
+		return Vector3(a.x + b.x, a.y + b.y, a.z + b.z);
 	}
 
 	friend Vector3 operator-(const Vector3& a, const Vector3& b)
 	{
-		return Vector3(a.X - b.X, a.Y - b.Y, a.Z - b.Z);
+		return Vector3(a.x - b.x, a.y - b.y, a.z - b.z);
 	}
 
 	friend Vector3 operator*(const Vector3& left, const Vector3& right)
 	{
-		return Vector3(left.X * right.X, left.Y * right.Y, left.Z * right.Z);
+		return Vector3(left.x * right.x, left.y * right.y, left.z * right.z);
 	}
 
 	friend Vector3 operator*(const Vector3& vec, float scalar)
 	{
-		return Vector3(vec.X * scalar, vec.Y * scalar, vec.Z * scalar);
+		return Vector3(vec.x * scalar, vec.y * scalar, vec.z * scalar);
 	}
 
 
 	friend Vector3 operator*(float scalar, const Vector3& vec)
 	{
-		return Vector3(vec.X * scalar, vec.Y * scalar, vec.Z * scalar);
+		return Vector3(vec.x * scalar, vec.y * scalar, vec.z * scalar);
 	}
 
 
 	Vector3& operator*=(float scalar)
 	{
-		X *= scalar;
-		Y *= scalar;
-		Z *= scalar;
+		x *= scalar;
+		y *= scalar;
+		z *= scalar;
 		return *this;
 	}
 
 	//Vector +=
 	Vector3& operator+=(const Vector3& right)
 	{
-		X += right.X;
-		Y += right.Y;
-		Z += right.Z;
+		x += right.x;
+		y += right.y;
+		z += right.z;
 		return *this;
 	}
 
 	//Vector -=
 	Vector3& operator-=(const Vector3& right)
 	{
-		X -= right.X;
-		Y -= right.Y;
-		Z -= right.Z;
+		x -= right.x;
+		y -= right.y;
+		z -= right.z;
 		return *this;
 	}
 
 
 	float LengthSq() const
 	{
-		return (X * X + Y * Y + Z * Z);
+		return (x * x + y * y + z * z);
 	}
 
 	float Length() const
@@ -351,9 +351,9 @@ public:
 		float length = Length();
 		if (length != 0)
 		{
-			X /= length;
-			Y /= length;
-			Z /= length;
+			x /= length;
+			y /= length;
+			z /= length;
 		}
 	}
 
@@ -368,16 +368,16 @@ public:
 	//Dot product between two vectors (a dot b)
 	static float Dot(const Vector3& a, const Vector3& b)
 	{
-		return (a.X * b.X + a.Y * b.Y + a.Z * b.Z);
+		return (a.x * b.x + a.y * b.y + a.z * b.z);
 	}
 
 	//Cross product between two vectors (a cross b)
 	static Vector3 Cross(const Vector3& a, const Vector3& b)
 	{
 		Vector3 temp;
-		temp.X = a.Y * b.Z - a.Z * b.Y;
-		temp.Y = a.Z * b.X - a.X * b.Z;
-		temp.Z = a.X * b.Y - a.Y * b.X;
+		temp.x = a.y * b.z - a.z * b.y;
+		temp.y = a.z * b.x - a.x * b.z;
+		temp.z = a.x * b.y - a.y * b.x;
 		return temp;
 	}
 
@@ -505,7 +505,7 @@ public:
 
 	static Matrix3 CreateScale(const Vector2& scaleVector)
 	{
-		return CreateScale(scaleVector.X, scaleVector.Y);
+		return CreateScale(scaleVector.x, scaleVector.y);
 	}
 
 	static Matrix3 CreateScale(float scale)
@@ -532,7 +532,7 @@ public:
 		{
 			{ 1.0f, 0.0f, 0.0f },
 			{ 0.0f, 1.0f, 0.0f },
-			{ trans.X, trans.Y, 1.0f },
+			{ trans.x, trans.y, 1.0f },
 		};
 		return Matrix3(temp);
 	}
@@ -699,9 +699,9 @@ public:
 	Vector3 GetScale() const
 	{
 		Vector3 returnValue;
-		returnValue.X = Vector3(matrix[0][0], matrix[0][1], matrix[0][2]).Length();
-		returnValue.Y = Vector3(matrix[1][0], matrix[1][1], matrix[1][2]).Length();
-		returnValue.Z = Vector3(matrix[2][0], matrix[2][1], matrix[2][2]).Length();
+		returnValue.x = Vector3(matrix[0][0], matrix[0][1], matrix[0][2]).Length();
+		returnValue.y = Vector3(matrix[1][0], matrix[1][1], matrix[1][2]).Length();
+		returnValue.z = Vector3(matrix[2][0], matrix[2][1], matrix[2][2]).Length();
 		return returnValue;
 	}
 
@@ -719,7 +719,7 @@ public:
 
 	static Matrix4 CreateScale(const Vector3& scaleVector)
 	{
-		return CreateScale(scaleVector.X, scaleVector.Y, scaleVector.Z);
+		return CreateScale(scaleVector.x, scaleVector.y, scaleVector.z);
 	}
 
 	//Create a scale matrix with a uniform factor
@@ -777,7 +777,7 @@ public:
 			{ 1.0f, 0.0f, 0.0f, 0.0f },
 			{ 0.0f, 1.0f, 0.0f, 0.0f },
 			{ 0.0f, 0.0f, 1.0f, 0.0f },
-			{ trans.X, trans.Y, trans.Z, 1.0f }
+			{ trans.x, trans.y, trans.z, 1.0f }
 		};
 		return Matrix4(temp);
 	}
@@ -788,16 +788,16 @@ public:
 		Vector3 xAxis = Vector3::Normalize(Vector3::Cross(up, zAxis));
 		Vector3 yAxis = Vector3::Normalize(Vector3::Cross(zAxis, xAxis));
 		Vector3 trans;
-		trans.X = -Vector3::Dot(xAxis, eye);
-		trans.Y = -Vector3::Dot(yAxis, eye);
-		trans.Z = -Vector3::Dot(zAxis, eye);
+		trans.x = -Vector3::Dot(xAxis, eye);
+		trans.y = -Vector3::Dot(yAxis, eye);
+		trans.z = -Vector3::Dot(zAxis, eye);
 
 		float temp[4][4] =
 		{
-			{ xAxis.X, yAxis.X, zAxis.X, 0.0f },
-			{ xAxis.Y, yAxis.Y, zAxis.Y, 0.0f },
-			{ xAxis.Z, yAxis.Z, zAxis.Z, 0.0f },
-			{ trans.X, trans.Y, trans.Z, 1.0f }
+			{ xAxis.x, yAxis.x, zAxis.x, 0.0f },
+			{ xAxis.y, yAxis.y, zAxis.y, 0.0f },
+			{ xAxis.z, yAxis.z, zAxis.z, 0.0f },
+			{ trans.x, trans.y, trans.z, 1.0f }
 		};
 		return Matrix4(temp);
 	}
@@ -847,10 +847,10 @@ public:
 class Quaternion
 {
 public:
-	float X;
-	float Y;
-	float Z;
-	float W;
+	float x;
+	float y;
+	float z;
+	float w;
 
 	Quaternion()
 	{
@@ -866,30 +866,30 @@ public:
 	explicit Quaternion(const Vector3& axis, float angle)
 	{
 		float scalar = Math::Sin(angle / 2.0f);
-		X = axis.X * scalar;
-		Y = axis.Y * scalar;
-		Z = axis.Z * scalar;
-		W = Math::Cos(angle / 2.0f);
+		x = axis.x * scalar;
+		y = axis.y * scalar;
+		z = axis.z * scalar;
+		w = Math::Cos(angle / 2.0f);
 	}
 
 	void Set(float inX, float inY, float inZ, float inW)
 	{
-		X = inX;
-		Y = inY;
-		Z = inZ;
-		W = inW;
+		x = inX;
+		y = inY;
+		z = inZ;
+		w = inW;
 	}
 
 	void Conjugate()
 	{
-		X *= -1.0f;
-		Y *= -1.0f;
-		Z *= -1.0f;
+		x *= -1.0f;
+		y *= -1.0f;
+		z *= -1.0f;
 	}
 
 	float LengthSq() const
 	{
-		return (X * X + Y * Y + Z * Z + W * W);
+		return (x * x + y * y + z * z + w * w);
 	}
 
 	float Length() const
@@ -902,10 +902,10 @@ public:
 		float length = Length();
 		if (length != 0)
 		{
-			X /= length;
-			Y /= length;
-			Z /= length;
-			W /= length;
+			x /= length;
+			y /= length;
+			z /= length;
+			w /= length;
 		}
 	}
 
@@ -919,17 +919,17 @@ public:
 	static Quaternion Lerp(const Quaternion& a, const Quaternion& b, float f)
 	{
 		Quaternion returnValue;
-		returnValue.X = Math::Lerp(a.X, b.X, f);
-		returnValue.Y = Math::Lerp(a.Y, b.Y, f);
-		returnValue.Z = Math::Lerp(a.Z, b.Z, f);
-		returnValue.W = Math::Lerp(a.W, b.W, f);
+		returnValue.x = Math::Lerp(a.x, b.x, f);
+		returnValue.y = Math::Lerp(a.y, b.y, f);
+		returnValue.z = Math::Lerp(a.z, b.z, f);
+		returnValue.w = Math::Lerp(a.w, b.w, f);
 		returnValue.Normalize();
 		return returnValue;
 	}
 
 	static float Dot(const Quaternion& a, const Quaternion& b)
 	{
-		return a.X * b.X + a.Y * b.Y + a.Z * b.Z + a.W * b.W;
+		return a.x * b.x + a.y * b.y + a.z * b.z + a.w * b.w;
 	}
 
 	static Quaternion Slerp(const Quaternion& a, const Quaternion& b, float f)
@@ -965,10 +965,10 @@ public:
 		}
 
 		Quaternion returnValue;
-		returnValue.X = scale0 * a.X + scale1 * b.X;
-		returnValue.Y = scale0 * a.Y + scale1 * b.Y;
-		returnValue.Z = scale0 * a.Z + scale1 * b.Z;
-		returnValue.W = scale0 * a.W + scale1 * b.W;
+		returnValue.x = scale0 * a.x + scale1 * b.x;
+		returnValue.y = scale0 * a.y + scale1 * b.y;
+		returnValue.z = scale0 * a.z + scale1 * b.z;
+		returnValue.w = scale0 * a.w + scale1 * b.w;
 		returnValue.Normalize();
 		return returnValue;
 	}
@@ -980,16 +980,16 @@ public:
 
 		//Vector component is:
 		//ps * qv + qs * pv + pv x qv
-		Vector3 qv(q.X, q.Y, q.Z);
-		Vector3 pv(p.X, p.Y, p.Z);
-		Vector3 newVec = p.W * qv + q.W * pv + Vector3::Cross(pv, qv);
-		returnValue.X = newVec.X;
-		returnValue.Y = newVec.Y;
-		returnValue.Z = newVec.Z;
+		Vector3 qv(q.x, q.y, q.z);
+		Vector3 pv(p.x, p.y, p.z);
+		Vector3 newVec = p.w * qv + q.w * pv + Vector3::Cross(pv, qv);
+		returnValue.x = newVec.x;
+		returnValue.y = newVec.y;
+		returnValue.z = newVec.z;
 
 		//Scalar component is:
 		//ps * qs - pv . qv
-		returnValue.W = p.W * q.W - Vector3::Dot(pv, qv);
+		returnValue.w = p.w * q.w - Vector3::Dot(pv, qv);
 
 		return returnValue;
 	}
